@@ -4,16 +4,14 @@
 
 int main()
 {
-    // TERMINAR
     // Variable auxiliar
-    char *buff;
-    buff = (char *)malloc(100 * sizeof(char));
+    char *buff = (char *)malloc(100 * sizeof(char));
 
     char **nombres = (char **)malloc(5 * sizeof(char));
 
     for (int i = 0; i < 5; i++)
     {
-        nombres[i] = (char *)malloc(strlen(buff) + 1 * sizeof(char));
+        nombres[i] = (char *)malloc((strlen(buff) + 1) * sizeof(char));
         printf("Ingrese el nombre %d: ", i + 1);
         gets(buff);
         strcpy(nombres[i], buff);
