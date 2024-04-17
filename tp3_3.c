@@ -11,14 +11,14 @@ int main()
     // Variable auxiliar
     char *buff = (char *)malloc(100 * sizeof(char));
 
-    // char *V[]
-    char *nombres[5];
+    // char **V
+    char **nombres = (char **)malloc(5 * sizeof(char *));
 
     // Cargo los 5 nombres
     for (int i = 0; i < 5; i++)
     {
         printf("Ingrese el nombre %d: ", i + 1);
-        gets(buff);
+        scanf("%s", buff);
         *(nombres + i) = (char *)malloc((strlen(buff) + 1) * sizeof(char));
         strcpy(*(nombres + i), buff);
     }
@@ -26,17 +26,19 @@ int main()
     // Muestro por pantalla los nombres
     for (int i = 0; i < 5; i++)
     {
-        printf("Nombre %d: ", i + 1);
+        printf("Nombre %d:", i + 1);
         puts(*(nombres + i));
     }
 
     // Libero memoria asignada dinámicamente
     free(buff);
-    
+
     for (int i = 0; i < 5; i++)
     {
-        free(nombres + i);
+        free(*(nombres + i)); // Libero cada puntero dentro de nombres
     }
+
+    free(nombres); // Y aquí libero nombres como tal
 
     return 0;
 }
