@@ -37,7 +37,6 @@ int main()
     {
         free(nombres + i);
     }
-    
 
     return 0;
 }
